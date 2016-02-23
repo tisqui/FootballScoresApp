@@ -21,7 +21,7 @@
         </activity>
 
         <provider
-            android:name=".ScoresProvider"
+            android:name=".data.ScoresProvider"
             android:authorities="barqsoft.footballscores" />
 
         <activity
@@ -33,6 +33,20 @@
                 android:value="barqsoft.footballscores.MainActivity" />
         </activity>
         <service android:name=".service.myFetchService" />
+
+        <!-- Score Widget -->
+        <receiver
+            android:name=".widget.ScoresWidgetProvider"
+            android:label="Football widget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget_info_score" />
+        </receiver>
+        <service android:name=".widget.ScoresWidgetIntentService" />
+
     </application>
 
 </manifest>
