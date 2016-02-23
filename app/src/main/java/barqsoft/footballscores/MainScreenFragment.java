@@ -94,9 +94,6 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
         mAdapter.swapCursor(cursor);
         //mAdapter.notifyDataSetChanged();
 
-        Intent dataUpdatedIntent = new Intent(myFetchService.ACTION_DATA_UPDATED)
-                .setPackage(getActivity().getPackageName());
-        getActivity().sendBroadcast(dataUpdatedIntent);
     }
 
     @Override

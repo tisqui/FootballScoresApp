@@ -16,6 +16,7 @@ import android.widget.RemoteViews;
 
 import barqsoft.footballscores.MainActivity;
 import barqsoft.footballscores.R;
+import barqsoft.footballscores.Utilies;
 import barqsoft.footballscores.data.DatabaseContract;
 
 /**
@@ -24,7 +25,7 @@ import barqsoft.footballscores.data.DatabaseContract;
 public class ScoresWidgetIntentService extends IntentService {
     public static final String LOG_TAG = ScoresWidgetIntentService.class.getSimpleName();
     private static final String[] SCORE_COLUMNS = {
-            DatabaseContract.scores_table._ID,
+            DatabaseContract.scores_table.MATCH_ID,
             DatabaseContract.scores_table.HOME_COL,
             DatabaseContract.scores_table.AWAY_COL,
             DatabaseContract.scores_table.HOME_GOALS_COL,
@@ -51,13 +52,13 @@ public class ScoresWidgetIntentService extends IntentService {
                 ScoresWidgetProvider.class));
 
         // Get today's data from the ContentProvider
-        Cursor data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(),
+        Cursor data = getContentResolver().query(DatabaseContract.BASE_CONTENT_URI,
                 //projection
                 SCORE_COLUMNS,
                 //selection
                 null,
                 null,
-                DatabaseContract.scores_table.DATE_COL + " ASC");
+                DatabaseContract.scores_table.DATE_COL + " DESC");
 
         if (data == null) {
             return;
@@ -69,8 +70,8 @@ public class ScoresWidgetIntentService extends IntentService {
 
         // Extract the weather data from the Cursor
         String teams = data.getString(INDEX_HOME_COL) + " - " + data.getString(INDEX_AWAY_COL);
-        String score = data.getString(INDEX_HOME_GOALS_COL) + " : " + data.getString(INDEX_AWAY_GOALS_COL);
-        int time = data.getInt(INDEX_TIME_COL);
+        String score = Utilies.getScores(data.getInt(INDEX_HOME_GOALS_COL), data.getInt(INDEX_AWAY_GOALS_COL));
+        String time = data.getString(INDEX_TIME_COL);
         data.close();
 
         // Perform this loop procedure for each Today widget
@@ -96,7 +97,7 @@ public class ScoresWidgetIntentService extends IntentService {
             }
             views.setTextViewText(R.id.score_text,score );
             views.setTextViewText(R.id.teams_text, teams);
-            views.setTextViewText(R.id.time_text, String.valueOf(time));
+            views.setTextViewText(R.id.time_text, time);
             Log.d(LOG_TAG, "Score = " + score);
             Log.d(LOG_TAG, "Teams = "+ teams);
             Log.d(LOG_TAG, "Time = "+ time);

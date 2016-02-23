@@ -33,6 +33,8 @@ public class myFetchService extends IntentService
     public static final String LOG_TAG = "myFetchService";
     public static final String ACTION_DATA_UPDATED =
             "barqsoft.footballscores.ACTION_DATA_UPDATED";
+    private final String KEY = "";
+
     public myFetchService()
     {
         super("myFetchService");
@@ -65,7 +67,7 @@ public class myFetchService extends IntentService
             URL fetch = new URL(fetch_build.toString());
             m_connection = (HttpURLConnection) fetch.openConnection();
             m_connection.setRequestMethod("GET");
-            m_connection.addRequestProperty("X-Auth-Token",getString(R.string.api_key));
+            m_connection.addRequestProperty("X-Auth-Token",KEY);
             m_connection.connect();
 
             // Read the input stream into a String
@@ -119,11 +121,15 @@ public class myFetchService extends IntentService
                     //if there is no data, call the function on dummy data
                     //this is expected behavior during the off season.
                     processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
+                    updateWidgets();
                     return;
                 }
 
 
                 processJSONdata(JSON_data, getApplicationContext(), true);
+                //data was processed ithout errors, time to update the widget
+                updateWidgets();
+
             } else {
                 //Could not Connect
                 Log.d(LOG_TAG, "Could not connect to server.");
@@ -267,8 +273,6 @@ public class myFetchService extends IntentService
             values.toArray(insert_data);
             inserted_data = mContext.getContentResolver().bulkInsert(
                     DatabaseContract.BASE_CONTENT_URI,insert_data);
-
-            updateWidgets();
             Log.v(LOG_TAG,"Succesfully Inserted : " + String.valueOf(inserted_data));
         }
         catch (JSONException e)
