@@ -17,7 +17,7 @@
             android:id="@+id/score_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/primary"
+            android:textColor="@color/grey_700"
             android:text="1:1"
             android:textSize="8dp"/>
         <TextView
@@ -26,16 +26,17 @@
             android:layout_height="wrap_content"
             android:text="Manchster - FC Nurnberg"
             android:textSize="8dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/primary"/>
+            android:textColor="@color/primary"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/primary"
+            android:textColor="@color/grey_700"
             android:text="11:15"
-            android:textSize="8dp"
-            android:layout_marginTop="8dp"/>
+            android:textSize="8dp"/>
 
     </LinearLayout>
 </FrameLayout>

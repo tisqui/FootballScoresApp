@@ -24,4 +24,14 @@
         <item name="android:textColor">@drawable/pager_selector</item>
     </style>
 
+    <style name="WidgetTheme">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+
+    <style name="Theme.FootballApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
 </resources>

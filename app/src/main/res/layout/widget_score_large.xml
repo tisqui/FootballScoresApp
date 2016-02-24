@@ -8,42 +8,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/widget_background"
-                    android:gravity="center_vertical"
                     android:padding="8dp">
 
-        <TextView
-            android:id="@+id/score_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primary"
-            android:text="1:1"
-            android:textSize="12dp"/>
-
         <LinearLayout
+            android:id="@+id/score_block"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@+id/score_text"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/teams_text"
+                android:id="@+id/score_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Manchster - FC Nurnberg"
-                android:textColor="@color/primary"
-                android:textSize="12dp"/>
+                android:textColor="@color/grey_700"
+                android:text="1:1"
+                android:textSize="24dp"/>
 
             <TextView
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/primary"
+                android:textColor="@color/grey_700"
                 android:text="11:15"
-                android:textSize="12dp"/>
+                android:textSize="10dp"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/teams_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/score_block"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"
+            android:text="Manchster - FC Nurnberg"
+            android:textColor="@color/primary"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"/>
 
     </RelativeLayout>
 </FrameLayout>

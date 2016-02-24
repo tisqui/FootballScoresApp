@@ -15,7 +15,9 @@
             android:layout_width="match_parent"
             android:layout_gravity="top"
             style="@style/viewPagerStrip"
-            android:textAppearance="@style/viewPageStripText"/>
+            android:textAppearance="@style/viewPageStripText"
+            android:elevation="4dp"
+            />
         >
     </android.support.v4.view.ViewPager>
 

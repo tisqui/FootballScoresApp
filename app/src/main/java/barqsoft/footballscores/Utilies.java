@@ -19,7 +19,7 @@ public class Utilies
             case CHAMPIONS_LEAGUE : return "UEFA Champions League";
             case PRIMERA_DIVISION : return "Primera Division";
             case BUNDESLIGA : return "Bundesliga";
-            default: return "Not known League Please report";
+            default: return "Not known League";
         }
     }
     public static String getMatchDay(int match_day,int league_num)
@@ -81,7 +81,18 @@ public class Utilies
             case "West Bromwich Albion" : return R.drawable.west_bromwich_albion_hd_logo;
             case "Sunderland AFC" : return R.drawable.sunderland;
             case "Stoke City FC" : return R.drawable.stoke_city;
-            default: return R.drawable.arsenal;
+            //************
+            case "Rayo Vallecano de Madrid": return R.drawable.stoke_city;
+            case "Sevilla FC": return R.drawable.manchester_united;
+            case "SV Sandhausen": return R.drawable.sunderland;
+            case "SC Freiburg": return R.drawable.west_bromwich_albion_hd_logo;
+            case "Arminia Bielefeld": return R.drawable.tottenham_hotspur;
+            case "SC Paderborn 07": return R.drawable.everton_fc_logo1;
+            case "TSV 1860 München": return R.drawable.swansea_city_afc;
+            case "VfL Bochum": return R.drawable.leicester_city_fc_hd_logo;
+
+
+            default: return R.drawable.no_icon;
         }
     }
 }
