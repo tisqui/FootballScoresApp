@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.widget.RemoteViews;
 
@@ -46,12 +45,12 @@ public class ScoresWidgetIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        // Retrieve all of the Today widget ids: these are the widgets we need to update
+        // Retrieve all of the Scores widget ids
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
                 ScoresWidgetProvider.class));
 
-        // Get today's data from the ContentProvider
+        // Get scores data from the ContentProvider
         Cursor data = getContentResolver().query(DatabaseContract.BASE_CONTENT_URI,
                 //projection
                 SCORE_COLUMNS,
@@ -68,15 +67,14 @@ public class ScoresWidgetIntentService extends IntentService {
             return;
         }
 
-        // Extract the weather data from the Cursor
+        // Extract the latest game score data from the Cursor
         String teams = data.getString(INDEX_HOME_COL) + " - " + data.getString(INDEX_AWAY_COL);
         String score = Utilies.getScores(data.getInt(INDEX_HOME_GOALS_COL), data.getInt(INDEX_AWAY_GOALS_COL));
         String time = data.getString(INDEX_TIME_COL);
         data.close();
 
-        // Perform this loop procedure for each Today widget
+        // Perform this loop procedure for each widget
         for (int appWidgetId : appWidgetIds) {
-            // Find the correct layout based on the widget's width
             int widgetWidth = getWidgetWidth(appWidgetManager, appWidgetId);
             int defaultWidth = getResources().getDimensionPixelSize(R.dimen.widget_default_width);
             int largeWidth = getResources().getDimensionPixelSize(R.dimen.widget_large_width);
@@ -98,9 +96,9 @@ public class ScoresWidgetIntentService extends IntentService {
             views.setTextViewText(R.id.score_text,score );
             views.setTextViewText(R.id.teams_text, teams);
             views.setTextViewText(R.id.time_text, time);
-            Log.d(LOG_TAG, "Score = " + score);
-            Log.d(LOG_TAG, "Teams = "+ teams);
-            Log.d(LOG_TAG, "Time = "+ time);
+//            Log.d(LOG_TAG, "Score = " + score);
+//            Log.d(LOG_TAG, "Teams = "+ teams);
+//            Log.d(LOG_TAG, "Time = "+ time);
 
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(this, MainActivity.class);
@@ -127,7 +125,6 @@ public class ScoresWidgetIntentService extends IntentService {
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
         if (options.containsKey(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)) {
             int minWidthDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-            // The width returned is in dp, but we'll convert it to pixels to match the other widths
             DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
             return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, minWidthDp,
                     displayMetrics);
