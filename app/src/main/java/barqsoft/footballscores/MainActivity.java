@@ -3,6 +3,7 @@ package barqsoft.footballscores;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,11 +15,17 @@ public class MainActivity extends ActionBarActivity
     public static String LOG_TAG = "MainActivity";
     private final String save_tag = "Save Test";
     private PagerFragment my_main;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(LOG_TAG, "Reached MainActivity onCreate");
+
+        //add toolbar
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         if (savedInstanceState == null) {
             my_main = new PagerFragment();
             getSupportFragmentManager().beginTransaction()
