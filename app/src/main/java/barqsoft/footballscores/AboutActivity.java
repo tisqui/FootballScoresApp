@@ -19,9 +19,13 @@ public class AboutActivity extends ActionBarActivity {
         setContentView(R.layout.activity_about);
 
         //add toolbar
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (toolbar == null) {
+            toolbar = (Toolbar) findViewById(R.id.tool_bar);
+            if(toolbar != null){
+                setSupportActionBar(toolbar);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
