@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/widget_list_item"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/selector"
+             android:orientation="vertical">
+
+    <RelativeLayout android:id="@+id/widget"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/widget_background"
+                    android:padding="8dp"
+                    android:minHeight="?android:attr/listPreferredItemHeight">
+
+        <LinearLayout
+            android:id="@+id/score_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/score_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:1"
+                android:textColor="@color/grey_700"
+                android:textSize="24dp"/>
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:15"
+                android:textColor="@color/grey_700"
+                android:textSize="10dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/teams_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/score_block"
+            android:ellipsize="none"
+            android:gravity="center_vertical"
+            android:scrollHorizontally="false"
+            android:text="Manchster - FC Nurnberg"
+            android:textColor="@color/primary"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -48,6 +48,24 @@
         </receiver>
         <service android:name=".widget.ScoresWidgetIntentService" />
 
+        <!-- Collection Score Widget -->
+        <receiver
+            android:name=".widget.CollectionWidgetProvider"
+            android:label="Football scores widget"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget_info_score" />
+        </receiver>
+        <service
+            android:name=".widget.CollectionWidgetService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
     </application>
 
 </manifest>
