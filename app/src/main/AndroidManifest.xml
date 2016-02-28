@@ -58,7 +58,7 @@
                 <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
-                       android:resource="@xml/widget_info_score" />
+                       android:resource="@xml/widget_collection_list" />
         </receiver>
         <service
             android:name=".widget.CollectionWidgetService"

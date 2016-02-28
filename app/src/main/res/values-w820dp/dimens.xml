@@ -11,4 +11,10 @@
     <dimen name="widget_min_resize_width">40dp</dimen>
     <dimen name="widget_min_resize_height">@dimen/widget_default_height</dimen>
     <dimen name="widget_large_width">220dp</dimen>
+
+    <!-- Collection widget -->
+    <dimen name="widget_collection_width">250dp</dimen>
+    <dimen name="widget_collection_height">180dp</dimen>
+    <dimen name="widget_collection_min_resize_width">220dp</dimen>
+    <dimen name="widget_collection_min_resize_height">180dp</dimen>
 </resources>

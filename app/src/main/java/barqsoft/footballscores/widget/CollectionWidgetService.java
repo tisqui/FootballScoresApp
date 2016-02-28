@@ -1,10 +1,8 @@
 package barqsoft.footballscores.widget;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
-import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -20,7 +18,7 @@ public class CollectionWidgetService extends RemoteViewsService {
 
     public final String LOG_TAG = CollectionWidgetService.class.getSimpleName();
     private static final String[] SCORE_COLUMNS = {
-            DatabaseContract.SCORES_TABLE + "." + DatabaseContract.scores_table.MATCH_ID,
+            DatabaseContract.scores_table.MATCH_ID,
             DatabaseContract.scores_table.HOME_COL,
             DatabaseContract.scores_table.AWAY_COL,
             DatabaseContract.scores_table.HOME_GOALS_COL,
@@ -50,13 +48,10 @@ public class CollectionWidgetService extends RemoteViewsService {
                 if (data != null) {
                     data.close();
                 }
-                // This method is called by the app hosting the widget (e.g., the launcher)
-                // However, our ContentProvider is not exported so it doesn't have access to the
-                // data. Therefore we need to clear (and finally restore) the calling identity so
-                // that calls use our process and permission
+
                 final long identityToken = Binder.clearCallingIdentity();
 
-                Cursor data = getContentResolver().query(DatabaseContract.BASE_CONTENT_URI,
+                data = getContentResolver().query(DatabaseContract.BASE_CONTENT_URI,
                         //projection
                         SCORE_COLUMNS,
                         //selection
@@ -98,18 +93,11 @@ public class CollectionWidgetService extends RemoteViewsService {
                 views.setTextViewText(R.id.teams_text, teams);
                 views.setTextViewText(R.id.time_text, time);
 
-                //TODO set what happens when the item is clicked
-
-//                final Intent fillInIntent = new Intent();
-//                views.setOnClickFillInIntent(R.id.widget_collection_list_item, fillInIntent);
+                final Intent fillInIntent = new Intent();
+                views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
                 return views;
             }
 
-            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-            private void setRemoteContentDescription(RemoteViews views, String description) {
-                // set remote content description when add icons
-                //  views.setContentDescription(, description);
-            }
 
             @Override
             public RemoteViews getLoadingView() {
@@ -123,8 +111,8 @@ public class CollectionWidgetService extends RemoteViewsService {
 
             @Override
             public long getItemId(int position) {
-                if (data.moveToPosition(position))
-                    return data.getLong(INDEX_ID);
+//                if (data.moveToPosition(position))
+//                    return Long.getLong(data.getString(INDEX_ID));
                 return position;
             }
 
