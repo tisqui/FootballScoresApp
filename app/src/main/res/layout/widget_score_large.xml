@@ -3,8 +3,9 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:padding="@dimen/widget_margin">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/widget"
+
+    <RelativeLayout android:id="@+id/widget"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/widget_background"
@@ -14,24 +15,22 @@
             android:id="@+id/score_block"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/score_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/grey_700"
-                android:text="1:1"
-                android:textSize="24dp"/>
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/grey_700"
-                android:text="11:15"
-                android:textSize="10dp"/>
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <TextView
@@ -41,13 +40,13 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_toRightOf="@+id/score_block"
+            android:layout_toEndOf="@+id/score_block"
             android:ellipsize="none"
+            android:gravity="center_vertical"
             android:scrollHorizontally="false"
-            android:text="Manchster - FC Nurnberg"
             android:textColor="@color/primary"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"/>
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 </FrameLayout>

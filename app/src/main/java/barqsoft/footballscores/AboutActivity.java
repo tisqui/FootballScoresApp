@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class AboutActivity extends ActionBarActivity {
@@ -45,7 +48,12 @@ public class AboutActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_about, container, false);
+          //About text contains html with links
+            View result = inflater.inflate(R.layout.fragment_about, container, false);
+            TextView tw = (TextView) result.findViewById(R.id.about_text);
+            Spanned sp = Html.fromHtml(getString(R.string.about_text));
+            tw.setText(sp);
+            return result;
         }
     }
 }

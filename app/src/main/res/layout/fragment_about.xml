@@ -11,10 +11,10 @@
                 tools:context="barqsoft.footballscores.AboutActivity$PlaceholderFragment">
 
     <TextView
+        android:id="@+id/about_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_text"
-        android:textSize="12sp"
+        android:textSize="14sp"
         />
 
 </RelativeLayout>

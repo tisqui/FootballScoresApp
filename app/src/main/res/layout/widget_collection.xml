@@ -39,9 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="12dp"
+            android:textSize="@dimen/empty_view_text_size"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="No score information loaded."/>
+            android:text="@string/empty_view_widget"/>
 
     </FrameLayout>
 
