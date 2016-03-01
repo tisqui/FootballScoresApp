@@ -7,9 +7,10 @@
                     android:minResizeHeight="@dimen/widget_collection_min_resize_height"
                     android:minResizeWidth="@dimen/widget_collection_min_resize_width"
                     android:minWidth="250dp"
+                    android:previewImage="@drawable/collection_widget_preview"
                     android:resizeMode="horizontal|vertical"
                     android:updatePeriodMillis="0"
                     android:widgetCategory="home_screen|keyguard"
-                    tools:ignore="UnusedAttribute" />
+                    tools:ignore="UnusedAttribute"
+    />
 
-    <!--android:previewImage="@drawable/widget_preview_detail"-->
