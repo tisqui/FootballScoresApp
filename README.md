@@ -11,7 +11,7 @@ To be able to use the project with not limited amount of request you need to get
 Store the key as API_KEY.
 
 ###Screenshots
-<img src="https://cloud.githubusercontent.com/assets/6324839/13595354/855e77e6-e4bf-11e5-8309-45dbf4b2cfaf.png" height="600" width="338">
+<img src="https://cloud.githubusercontent.com/assets/6324839/13595354/855e77e6-e4bf-11e5-8309-45dbf4b2cfaf.png" height="600">
 
 
 
